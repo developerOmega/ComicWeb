@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import MainLayout from '../../layouts/MainLayout';
 import { publicKey, hash, ts, url } from '../../config/config';
 import axios from 'axios';
 
@@ -6,11 +7,12 @@ const Character = ({character}) => {
   const router = useRouter();
   const { id } = router.query;
 
-
   return (
-    <p> Character: { character.name } </p>
-
-
+    <div>
+      <p> Character: { character.name } </p>
+      <p> Description: {character.description}</p>
+      <img src={character.thumbnail.path + '.' + character.thumbnail.extension} />
+    </div>
   )
 }
 
@@ -28,6 +30,7 @@ export async function getStaticProps({params}) {
 
   const link = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const req = await axios.get(link);
+  console.log(req.data.data.results[0].thumbnail);
   return {
     props: {
       character: req.data.data.results[0]
@@ -35,5 +38,7 @@ export async function getStaticProps({params}) {
   }
   
 }
+
+Character.Layout = MainLayout;
 
 export default Character;

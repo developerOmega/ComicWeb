@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MainLayout from '../layouts/MainLayout';
 import {url, ts, publicKey, hash} from '../config/config';
 import axios from 'axios';
 
@@ -6,7 +7,7 @@ const linkStyle = {
   marginRight: '20px',
 };
 
-const Stories = ({series}) => {
+const Series = ({series}) => {
 
   const getSeries = series.map( serie =>  
     <li key={serie.id} > {serie.id} - {serie.title} </li>  
@@ -40,4 +41,6 @@ export async function getStaticProps() {
   }
 }
 
-export default Stories;
+Series.Layout = MainLayout;
+
+export default Series;

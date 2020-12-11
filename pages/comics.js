@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MainLayout from '../layouts/MainLayout';
 import { publicKey, ts, hash, url } from '../config/config';
 import axios from 'axios';
 
@@ -28,11 +29,14 @@ const Comics = ( {comics} ) => {
 export async function getStaticProps() {
   const link = `${url}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const req = await axios.get(link);
+  
   return {
     props: {
       comics: req.data.data.results
     }
   }
 }
+
+Comics.Layout = MainLayout;
 
 export default Comics;

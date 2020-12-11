@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/series": "pages/series.js",
-  "/series/[id]": "pages/series/[id].js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/characters": "pages/characters.js",
-  "/comics": "pages/comics.js"
+  "/characters/[id]": "pages/characters/[id].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

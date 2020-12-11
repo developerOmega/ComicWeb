@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import MainLayout from '../../layouts/MainLayout';
 import {url, publicKey, ts, hash} from '../../config/config';
 import axios from 'axios';
 
@@ -26,5 +27,7 @@ export async function getStaticProps({params}) {
     }
   }
 }
+
+Comic.Layout = MainLayout;
 
 export default Comic;

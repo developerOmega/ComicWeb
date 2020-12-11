@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
+import MainLayout from '../../layouts/MainLayout';
 import { url, ts, publicKey, hash } from '../../config/config';
 import axios from 'axios';
 
-const Story = ({serie}) => {
+const Serie = ({serie}) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -27,4 +28,6 @@ export async function getStaticProps({params}) {
   }
 }
 
-export default Story;
+Serie.Layout = MainLayout;
+
+export default Serie;

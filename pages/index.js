@@ -1,20 +1,25 @@
 import Link from 'next/link';
 
-const linkStyle = {
-  marginRight: '20px',
-};
-
-
 const MyFirstView = () => (
-  <section>
-    <Link href='/profile'>
-      <a style={linkStyle}>Profile</a>
+  <section className="index">
+    <h1 className="title-index"> Comic Web </h1>
+
+    <Link href='/characters'>
+      <a className="link-index">Characters</a>
     </Link>
-    <Link href='/shows'>
-      <a style={linkStyle}>Shows</a>
+
+    <Link href='/comics'>
+      <a className="link-index"> Comics </a>
     </Link>
-    
-    <p>Hola Mundo</p>
+
+    <Link href='/series'>
+      <a className="link-index"> Series </a>
+    </Link>
+
   </section>
 );
+
+MyFirstView.Layout = ({children}) => <> {children} </>;
+
+
 export default MyFirstView;
