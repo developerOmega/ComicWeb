@@ -1,29 +1,58 @@
 import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import {url, publicKey, ts, hash} from '../../config/config';
-import axios from 'axios';
+import { getReq } from '../../config/axios';
 
-const Comic = ({comic}) => {
+import CardMain from '../../components/CardMain';
+import CardCharacter from '../../components/CardCharacter';
+
+const Comic = ({comic, characters}) => {
   const router = useRouter();
   const { id } = router.query;
-  return <p> Comic: { comic.title } </p>
+
+  const getCharacters = characters.map( character => 
+    <CardCharacter key={character.id}  character={character} />
+  )
+
+  return (
+    <section className="container">
+
+      <h2 className="title"> { comic.title } </h2>
+      
+      <CardMain data={comic} />
+      
+      <div className="section">
+        
+        <h3> Characters </h3>
+      
+        <div className="content-grid">
+          { getCharacters }
+        </div>
+
+      </div>
+      
+    </section>
+  );
 }
 
 export async function getStaticPaths() {
   const link = `${url}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const req = await axios.get(link);
-  const comics = req.data.data.results;
+  const comics = await getReq(link);
 
   const paths = comics.map(comic => `/comics/${comic.id}`);
   return {paths, fallback: false};
 }
 
 export async function getStaticProps({params}) {
-  const link = `${url}/v1/public/comics/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const req = await axios.get(link);
+  const linkComic = `${url}/v1/public/comics/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const linkCharacters = `${url}/v1/public/comics/${params.id}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  
+  const comic = await getReq(linkComic);
+  const characters = await getReq(linkCharacters);
+
   return {
     props: {
-      comic: req.data.data.results[0]
+      comic: comic[0], characters
     }
   }
 }

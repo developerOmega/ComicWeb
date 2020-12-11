@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import {url, ts, publicKey, hash} from '../config/config';
-import axios from 'axios';
+import { getReq } from '../config/axios';
 
 import CardLink from '../components/CardLink';
 
@@ -15,16 +15,10 @@ const Series = ({series}) => {
 
   const searchSerie = async (event) => {
     event.preventDefault();
-    const title = event.target.search.value;
+    const title = event.target.search.value;    
     const link = `${url}/v1/public/series?title=${title}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-    
-    try {
-      const req = await axios.get(link);
-      setSeriesData( req.data.data.results );
-    } catch (error) {
-      console.error(error);
-    }
-
+    const series = await getReq(link);
+    setSeriesData( series );
   }
 
   return (
@@ -46,11 +40,9 @@ const Series = ({series}) => {
 
 export async function getStaticProps() {
   const link = `${url}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const req = await axios.get(link);
+  const series = await getReq(link);
   return {
-    props: {
-      series: req.data.data.results
-    }
+    props: { series }
   }
 }
 

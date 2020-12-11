@@ -1,39 +1,51 @@
 import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import { publicKey, hash, ts, url } from '../../config/config';
-import axios from 'axios';
+import { getReq, getParams } from '../../config/axios';
 
-const Character = ({character}) => {
-  const router = useRouter();
-  const { id } = router.query;
+import CardMain from '../../components/CardMain';
+import CardComic from '../../components/CardComic';
+
+const Character = ({character, comics}) => {
+
+  const getCimics = comics.map( comic => 
+    <CardComic key={comic.id} comic={comic}  />
+  )
 
   return (
-    <div>
-      <p> Character: { character.name } </p>
-      <p> Description: {character.description}</p>
-      <img src={character.thumbnail.path + '.' + character.thumbnail.extension} />
-    </div>
+    <section className="container">
+      <h2> { character.name } </h2>
+      
+      <CardMain data={character} />
+
+      <div className="section">
+        <h3> Comics </h3>
+        { getCimics }
+      </div>
+
+    </section>
   )
 }
 
 export async function getStaticPaths() {
   const link = `${url}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const req = await axios.get(link);
-  const characters = req.data.data.results;2
-
+  const characters = await getReq(link);
   const paths = characters.map( character => `/characters/${character.id}`);
   return {paths, fallback: false};
-
 }
 
 export async function getStaticProps({params}) {
 
-  const link = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const req = await axios.get(link);
-  console.log(req.data.data.results[0].thumbnail);
+  const linkCharacter = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const linkComic = `${url}/v1/public/characters/${params.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+
+  const character = await getReq(linkCharacter);
+  const comics = await getReq(linkComic);
+
   return {
     props: {
-      character: req.data.data.results[0]
+      character: character[0],
+      comics
     }
   }
   

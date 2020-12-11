@@ -24,15 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/comics": [
+    "/characters": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/comics.js"
+      "static/chunks/pages/characters.js"
     ],
-    "/series": [
+    "/characters/[id]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/series.js"
+      "static/chunks/pages/characters/[id].js"
     ]
   },
   "ampFirstPages": []
