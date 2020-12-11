@@ -30,6 +30,7 @@ const Character = ({character, comics}) => {
 export async function getStaticPaths() {
   const link = `${url}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const characters = await getReq(link);
+  
   const paths = characters.map( character => `/characters/${character.id}`);
   return {paths, fallback: false};
 }
