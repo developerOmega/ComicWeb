@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import MainLayout from '../layouts/MainLayout';
 import {publicKey, ts, hash, url} from '../config/config';
 import axios from 'axios';
+
+import CardLink from '../components/CardLink';
 
 const Characters = ({characters}) => {
 
@@ -23,16 +24,7 @@ const Characters = ({characters}) => {
   }
 
   const getCharacters = charactersData.map((character) => (
-      
-      <Link href={`/characters/${character.id}`} key={character.id}>
-        <a>
-          <div>
-            {character.id} - {character.name} 
-          </div>
-          <img src={character.thumbnail.path + '.' + character.thumbnail.extension} width="100px" />
-        </a>
-      </Link>
-
+      <CardLink data={character} key={character.id}/>
     )
   );
 
@@ -49,7 +41,7 @@ const Characters = ({characters}) => {
         <button type="submit" > Buscar </button>
       </form>
 
-      <div> { getCharacters } </div>
+      <div className="grid-content"> { getCharacters } </div>
     </section>
 
   )

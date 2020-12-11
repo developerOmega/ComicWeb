@@ -1,32 +1,45 @@
-import Link from 'next/link';
+import { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import {url, ts, publicKey, hash} from '../config/config';
 import axios from 'axios';
 
-const linkStyle = {
-  marginRight: '20px',
-};
+import CardLink from '../components/CardLink';
 
 const Series = ({series}) => {
 
-  const getSeries = series.map( serie =>  
-    <li key={serie.id} > {serie.id} - {serie.title} </li>  
+  const [ seriesData, setSeriesData ] = useState(series);
+
+  const getSeries = seriesData.map( serie =>  
+    <CardLink data={serie} key={serie.id} />  
   );
 
+  const searchSerie = async (event) => {
+    event.preventDefault();
+    const title = event.target.search.value;
+    const link = `${url}/v1/public/series?title=${title}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    
+    try {
+      const req = await axios.get(link);
+      setSeriesData( req.data.data.results );
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
   return (
-  
-    <section>
-      <Link href='/characters'>
-        <a style={linkStyle}>Characters</a>
-      </Link>
-      <Link href='/comics'>
-        <a style={linkStyle}>Comics</a>
-      </Link>
-      <Link href='/'>
-        <a style={linkStyle}>Home</a>
-      </Link>
-      <h1>Stories</h1>
-      <ul> {getSeries} </ul>
+    <section className="container">
+      <h1 className="title">Series</h1>
+
+      <form className="search" onSubmit={searchSerie}>
+        <label>
+          Title:
+          <input type="search" name="search" placeholder="Search comic" />
+        </label>
+        <button type="submit" > Search </button>
+      </form>
+
+      <div className="content"> {getSeries} </div>
     </section>
   )
 };
