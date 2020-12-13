@@ -26,18 +26,14 @@ const Serie = ({serie, comics, characters}) => {
 
       <CardMain data={serie} />
 
-      <div className="section">
-        <h3> Characters </h3>
-        <div className="content-grid">
-          { getCharacters }
-        </div>
+      <h3 className="sub-title"> Characters </h3>
+      <div className="grid-content min-template">
+        { getCharacters }
       </div>
 
-      <div className="section">
-        <h3> Comics </h3>
-        <div className="content">
-          { getComics }
-        </div>
+      <h3 className="sub-title"> Comics </h3>
+      <div className="content">
+        { getComics }
       </div>
 
     </section>

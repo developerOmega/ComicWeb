@@ -15,7 +15,7 @@ const CardLink = ({data}) => {
   return (
     <Link href={ getLink() }>
       <a className={styles.container}>
-        <div className='select'>
+        <div className={styles.select}>
           {data.name || data.title} 
         </div>
         <img className='image' src={data.thumbnail.path + '.' + data.thumbnail.extension} width="100px" />

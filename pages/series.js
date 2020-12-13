@@ -27,13 +27,11 @@ const Series = ({series}) => {
 
       <form className="search" onSubmit={searchSerie}>
         <label>
-          Title:
-          <input type="search" name="search" placeholder="Search comic" />
+          <input type="search" name="search" placeholder="Search serie" />
         </label>
-        <button type="submit" > Search </button>
       </form>
 
-      <div className="content"> {getSeries} </div>
+      <div className="grid-content"> {getSeries} </div>
     </section>
   )
 };

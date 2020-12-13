@@ -29,10 +29,8 @@ const Characters = ({characters}) => {
       
       <form className="search" onSubmit={searchCharacter}>
         <label>
-          Name:
           <input type="search" name="search" placeholder="Search character" />
         </label>
-        <button type="submit" > Buscar </button>
       </form>
 
       <div className="grid-content"> { getCharacters } </div>

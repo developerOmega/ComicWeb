@@ -21,15 +21,12 @@ const Comic = ({comic, characters}) => {
       
       <CardMain data={comic} />
       
-      <div className="section">
-        
-        <h3> Characters </h3>
-      
-        <div className="content-grid">
-          { getCharacters }
-        </div>
+      <h3 className="sub-title"> Characters </h3>
 
+      <div className="grid-content template-min">
+        { getCharacters }
       </div>
+
       
     </section>
   );

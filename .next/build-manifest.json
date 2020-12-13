@@ -29,10 +29,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/characters.js"
     ],
-    "/characters/[id]": [
+    "/comics/[id]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/characters/[id].js"
+      "static/chunks/pages/comics/[id].js"
+    ],
+    "/series": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/series.js"
+    ],
+    "/series/[id]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/series/[id].js"
     ]
   },
   "ampFirstPages": []

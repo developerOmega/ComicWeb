@@ -28,13 +28,11 @@ const Comics = ( {comics} ) => {
 
       <form className="search" onSubmit={searchComic}>
         <label>
-          Title:
           <input type="search" name="search" placeholder="Search comic" />
         </label>
-        <button type="submit" > Search </button>
       </form>
 
-      <div className="content"> { getComics } </div>
+      <div className="grid-content"> { getComics } </div>
     </section>
   )
 };

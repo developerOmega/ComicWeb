@@ -1,0 +1,32 @@
+header.header {
+  position: relative;
+  background: $black;
+  .container-header{
+    padding: .5rem;
+
+    position: fixed;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: center;
+    justify-items: center;
+    .option {
+      padding-bottom: 1rem;
+      color: $white;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+
+  .c-logo{
+    padding-top: 1.5rem;
+  }
+}

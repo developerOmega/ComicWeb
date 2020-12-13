@@ -1,0 +1,38 @@
+@import '../src/styles/var.scss';
+
+.container {
+  display: grid;
+  background: $black;
+  color: $white;
+  border-radius: 5px;
+  box-shadow: 0px .5px 4px $black;
+  grid-template-areas: "main-image    name"
+                       "main-image    description"
+                       "main-image    creators";
+}
+
+.mainImage {
+  grid-area: main-image;
+  img {
+    border-radius: 5px;
+    display: block;
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+.name {
+  grid-area: name;
+  display: flex;
+  p {
+    padding-left: 5px;
+  }
+}
+
+.description {
+  grid-area: description;
+}
+
+.name, .description {
+  padding: 1rem;  
+}

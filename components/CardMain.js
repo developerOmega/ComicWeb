@@ -4,16 +4,20 @@ const CardMain = ({data}) => {
 
   return (
     <div className={styles.container}>
-      <img src={data.thumbnail.path + '.' + data.thumbnail.extension} />
-      <div>
+      <div className={styles.mainImage}>
+        <img src={data.thumbnail.path + '.' + data.thumbnail.extension} />
+      </div>
+    
+      <div className={styles.name}>
         <b> Name: </b>
         <p> { data.name || data.title } </p>
       </div>
-     
-      <div>
+
+      <div className={styles.description}>
         <b> Description: </b>
         <p> {data.description} </p>
       </div>
+      
     </div>
   );
 }

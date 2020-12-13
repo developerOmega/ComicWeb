@@ -14,12 +14,12 @@ const Character = ({character, comics}) => {
 
   return (
     <section className="container">
-      <h2> { character.name } </h2>
+      <h1 className="title"> { character.name } </h1>
       
       <CardMain data={character} />
 
-      <div className="section">
-        <h3> Comics </h3>
+      <h3 className="sub-title"> Comics </h3>
+      <div className="content">
         { getCimics }
       </div>
 

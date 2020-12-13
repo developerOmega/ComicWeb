@@ -5,14 +5,17 @@ const CardComic = ( {comic} ) => {
   return (
     <div className={styles.container}>
       
-      <img className="mainImg" src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} width="100px" />
+      <div className={styles.mainImage}>
+        <img  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} width="100px" />
+      </div>
+
       
-      <div className="section1">
+      <div className={styles.name}>
         <b> Name: </b>
         <p> { comic.title } </p>
       </div>
 
-      <div className="section2">
+      <div className={styles.description}>
         <b> Description: </b>
         <p> { comic.description } </p>
       </div>
