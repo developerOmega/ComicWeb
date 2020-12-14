@@ -15,11 +15,9 @@
   &:hover {
     & > .select{
       height: 100%;
+      background: rgba($black, .5);
+      color: rgba($white, 1);
       transition: ease .5s all;
-      
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 
@@ -31,12 +29,15 @@
   transition: ease .5s all;  
   height: 100%;
   
-  border-radius: 5px;
-  background: rgba($black, .5);
-  color: white;
+  background: rgba($black, 0);
+  color: rgba($white, 0);
   font-weight: 700;
   width: 100%;
   padding:  1.5rem;
-
-  display: none;
+  border-radius: 5px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
