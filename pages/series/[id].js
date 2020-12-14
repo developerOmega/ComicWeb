@@ -44,7 +44,7 @@ export async function getStaticPaths() {
   const link = `${url}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const series = await getReq(link);
   const paths = series.map(serie => `/series/${ serie.id }`);
-  return {paths, fallback: false};
+  return {paths, fallback: true};
 }
 
 export async function getStaticProps({params}) {
@@ -55,8 +55,6 @@ export async function getStaticProps({params}) {
   const serie = await getReq(linkSerie);
   const characters = await getReq(linkCharacter);
   const comics = await getReq(linkComics);
-
-  console.log(characters, "CHARACTERS");
 
   return {
     props: {

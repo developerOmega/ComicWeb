@@ -8,6 +8,8 @@ import CardComic from '../../components/CardComic';
 
 const Character = ({character, comics}) => {
 
+  const router = useRouter();
+
   const getCimics = comics.map( comic => 
     <CardComic key={comic.id} comic={comic}  />
   )
@@ -32,7 +34,7 @@ export async function getStaticPaths() {
   const characters = await getReq(link);
   
   const paths = characters.map( character => `/characters/${character.id}`);
-  return {paths, fallback: false};
+  return {paths, fallback: true};
 }
 
 export async function getStaticProps({params}) {
@@ -40,9 +42,9 @@ export async function getStaticProps({params}) {
   const linkCharacter = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkComic = `${url}/v1/public/characters/${params.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
-  const character = await getReq(linkCharacter);
-  const comics = await getReq(linkComic);
-
+  let character = await getReq(linkCharacter);
+  let comics = await getReq(linkComic);
+  
   return {
     props: {
       character: character[0],

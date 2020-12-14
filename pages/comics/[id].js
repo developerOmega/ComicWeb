@@ -37,7 +37,7 @@ export async function getStaticPaths() {
   const comics = await getReq(link);
 
   const paths = comics.map(comic => `/comics/${comic.id}`);
-  return {paths, fallback: false};
+  return {paths, fallback: true};
 }
 
 export async function getStaticProps({params}) {
