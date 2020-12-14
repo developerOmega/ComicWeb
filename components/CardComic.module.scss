@@ -36,3 +36,18 @@
 .name, .description {
   padding: 1rem;  
 }
+
+@media screen and (max-width: 650px) {
+  .container {
+    grid-template-areas: "main-image"
+                         "name" 
+                         "description";
+  }
+  .mainImage {
+    img {
+      width: 100%;
+      max-width: none;
+      min-width: none;
+    }
+  }
+}
