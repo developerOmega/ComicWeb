@@ -38,7 +38,7 @@ module.exports = {
     ]
   },
   env: {
-    PUBLIC_KEY: fs.readFileSync('keys/public.key', 'utf8'),
-    PRIVATE_KEY: fs.readFileSync('keys/private.key', 'utf8')
+    PUBLIC_KEY: fs.readFileSync('keys/public.key', 'utf8') || '',
+    PRIVATE_KEY: fs.readFileSync('keys/private.key', 'utf8') || ''
   }
 }
