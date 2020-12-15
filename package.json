@@ -46,5 +46,9 @@
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
     "svg-react-loader": "^0.4.6"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ]
 }
