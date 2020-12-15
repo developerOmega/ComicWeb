@@ -11,11 +11,11 @@ const Serie = ({serie, comics, characters}) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const getComics = comics.map( comic =>
+  const getComics = comics.lenght < 1 ? [] : comics.map( comic =>
     <CardComic comic={comic} key={comic.id} />  
   )
 
-  const getCharacters = characters.map(character => 
+  const getCharacters = characters.lenght < 1 ? [] : characters.map(character => 
     <CardCharacter character={character} key={character.id} />
   );
 

@@ -10,7 +10,7 @@ const Character = ({character, comics}) => {
 
   const router = useRouter();
 
-  const getCimics = comics.map( comic => 
+  const getCimics = comics.lenght < 1 ? [] : comics.map( comic => 
     <CardComic key={comic.id} comic={comic}  />
   )
 
