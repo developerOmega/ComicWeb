@@ -4,19 +4,16 @@ import CardMenuResponsive from '../components/CardMenuResponsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-
 const MainLayout = ({children}) => {
 
   const [responsive, setResponsive ] = useState(false);
 
   const viewMenu = () => {
     setResponsive(true);
-    console.log(responsive);
   }
 
   const outMenu = () => {
     setResponsive(false);
-    console.log(responsive);
   }
 
   return (
@@ -55,6 +52,14 @@ const MainLayout = ({children}) => {
       </header> 
       
       {children}
+
+      <footer className="footer">
+        <div className="name" >
+          Daniel Mendoza (developerOmega)
+        </div>
+        <div className="networks">
+        </div>
+      </footer>
 
     </div>
   );

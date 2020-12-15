@@ -30,7 +30,10 @@
 
 .main {
   display: grid;
-  grid-template-columns: 7.5rem 10fr ;
+  grid-template-columns: 7.5rem 10fr;
+  grid-template-areas: "header    main"
+                       "header    footer";
+  
   height: 100vh;
 }
 
@@ -52,8 +55,8 @@
   border: none;
   cursor: pointer;
 
-  display: none;
   
+  display: none;
   &:hover {
     background: $red;
   }
@@ -62,3 +65,4 @@
 @import './components/index.scss';
 @import './components/header.scss';
 @import './components/div.scss';
+@import './components/footer.scss';
