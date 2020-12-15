@@ -1,0 +1,46 @@
+@import '../src/styles/var.scss';
+
+.index {
+  background: $black;
+  height: 100vh;
+
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+
+  .container {
+    padding: 1rem 4.5rem;
+  }
+
+  .linkIndex, .titleIndex {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .linkIndex {
+    font-size: 20px;
+    &:hover {
+      text-decoration: underline;
+      color: $red;
+    }
+  }
+
+  .titleIndex {
+    padding: 50px;
+    font-size: 30px;
+    text-align: center;
+  }
+  .opt {
+    display: grid;
+    justify-items: center;
+    padding: 1rem 0;
+  }
+
+  .iconDelete {
+    color: $white;
+    width: 40px;
+    padding: 10px;
+    border: none;
+    background: transparent;
+  }
+}

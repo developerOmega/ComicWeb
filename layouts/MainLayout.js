@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import CardMenuResponsive from '../components/CardMenuResponsive';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 
 const MainLayout = ({children}) => {
+
+  const [responsive, setResponsive ] = useState(false);
+
+  const viewMenu = () => {
+    setResponsive(true);
+    console.log(responsive);
+  }
+
+  const outMenu = () => {
+    setResponsive(false);
+    console.log(responsive);
+  }
+
   return (
     <div className="main">
+
+      <button className="menu-icon" onClick={ viewMenu }>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+
+
+      { responsive ? <CardMenuResponsive resp={ outMenu } /> : null } 
+        
+
       <header className="header">
         <div className="container-header">
           <div className="c-logo">

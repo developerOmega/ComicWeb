@@ -34,6 +34,31 @@
   height: 100vh;
 }
 
+.menu-icon {
+  position: fixed;
+  z-index: 2;
+  top: 1rem;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  
+  margin: auto;
+  color: $white;
+  padding: 10px;
+  background: $black;
+  border: none;
+  cursor: pointer;
+
+  display: none;
+  
+  &:hover {
+    background: $red;
+  }
+}
+
 @import './components/index.scss';
 @import './components/header.scss';
 @import './components/div.scss';
