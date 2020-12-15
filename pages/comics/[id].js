@@ -32,7 +32,7 @@ const Comic = ({comic, characters}) => {
   );
 }
 
-export async function getStaticPaths() {
+Comic.getStaticPaths = async () => {
   const link = `${url}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const comics = await getReq(link);
 
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   return {paths, fallback: true};
 }
 
-export async function getStaticProps({params}) {
+Comic.getStaticProps = async ({params}) => {
   const linkComic = `${url}/v1/public/comics/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkCharacters = `${url}/v1/public/comics/${params.id}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   

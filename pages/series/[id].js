@@ -40,14 +40,14 @@ const Serie = ({serie, comics, characters}) => {
   );
 }
 
-export async function getStaticPaths() {
+Serie.getStaticPaths = async () => {
   const link = `${url}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const series = await getReq(link);
   const paths = series.map(serie => `/series/${ serie.id }`);
   return {paths, fallback: true};
 }
 
-export async function getStaticProps({params}) {
+Serie.getStaticProps = async ({params}) => {
   const linkSerie = `${url}/v1/public/series/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkCharacter = `${url}/v1/public/series/${params.id}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkComics = `${url}/v1/public/series/${params.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
