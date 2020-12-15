@@ -1,4 +1,3 @@
-const fs = require('fs');
 
 module.exports = {
   webpack: (config, { isServer }) => {
@@ -36,9 +35,5 @@ module.exports = {
         permanent: true,
       },
     ]
-  },
-  env: {
-    PUBLIC_KEY: fs.readFileSync('keys/public.key', 'utf8') || '',
-    PRIVATE_KEY: fs.readFileSync('keys/private.key', 'utf8') || ''
   }
 }
