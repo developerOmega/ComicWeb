@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import { url, ts, publicKey, hash } from '../../config/config';
 import { getReq } from '../../config/axios';
+import DefaultErrorPage from 'next/error';
 
 import CardMain from '../../components/CardMain';
 import CardCharacter from '../../components/CardCharacter';
@@ -9,15 +10,28 @@ import CardComic from '../../components/CardComic';
 
 const Serie = ({serie, comics, characters}) => {
   const router = useRouter();
-  const { id } = router.query;
+
+  if(router.isFallback) {
+    return <h1>Loading...</h1>
+  }
+
+  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+  if(!comics || !characters) {
+    return (
+      <section>
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </section>
+    )
+  }
 
   const getComics = comics.map( comic =>
     <CardComic comic={comic} key={comic.id} />  
   )
 
-  const getCharacters = characters.map(character => 
-    <CardCharacter character={character} key={character.id} />
-  );
+  const getCharacters = characters.map(character => <CardCharacter character={character} key={character.id} /> );
 
   return (
     <section className="container">
@@ -40,14 +54,18 @@ const Serie = ({serie, comics, characters}) => {
   );
 }
 
-Serie.getStaticPaths = async () => {
+Serie.Layout = MainLayout;
+
+export default Serie;
+
+export const getStaticPaths = async () => {
   const link = `${url}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const series = await getReq(link);
   const paths = series.map(serie => `/series/${ serie.id }`);
   return {paths, fallback: true};
 }
 
-Serie.getStaticProps = async ({params}) => {
+export const getStaticProps = async ({params}) => {
   const linkSerie = `${url}/v1/public/series/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkCharacter = `${url}/v1/public/series/${params.id}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const linkComics = `${url}/v1/public/series/${params.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
@@ -62,7 +80,3 @@ Serie.getStaticProps = async ({params}) => {
     }
   }
 }
-
-Serie.Layout = MainLayout;
-
-export default Serie;
