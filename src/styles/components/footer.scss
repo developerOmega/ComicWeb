@@ -1,3 +1,30 @@
 footer.footer {
   grid-area: footer;
+  background: $white;
+  border-top: $black 1px solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+
+  .networks {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+    justify-content: end;
+
+    .network {
+      text-decoration: none;
+      color: $black;
+    }
+    .network-cont {
+      display: flex;
+      align-items: center;
+    }
+    svg {
+      width: 30px;;
+    }
+  }
 }

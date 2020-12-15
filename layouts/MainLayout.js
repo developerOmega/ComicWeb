@@ -4,6 +4,10 @@ import CardMenuResponsive from '../components/CardMenuResponsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
+import Fb from '../src/icons/Fb';
+import Ln from '../src/icons/Ln';
+import Gh from '../src/icons/Gh';
+
 const MainLayout = ({children}) => {
 
   const [responsive, setResponsive ] = useState(false);
@@ -55,9 +59,22 @@ const MainLayout = ({children}) => {
 
       <footer className="footer">
         <div className="name" >
-          Daniel Mendoza (developerOmega)
+          Daniel Mendoza - theskip98@gmail.com  
         </div>
         <div className="networks">
+
+          <div>
+            <a target="_blank" href="https://www.facebook.com/developerOmega" className="network"> <Fb /> </a>
+          </div>
+
+          <div>
+            <a target="_blank" href="https://www.linkedin.com/in/daniel-mendoza-99b592172/" className="network"> <Ln /> </a>
+          </div>
+
+          <div>
+            <a target="_blank" href="https://github.com/developerOmega" className="network"> <Gh /> </a>
+          </div>
+
         </div>
       </footer>
 
