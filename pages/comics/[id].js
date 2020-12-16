@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import {url, publicKey, ts, hash} from '../../config/config';
 import { getReq } from '../../config/axios';
-import DefaultErrorPage from 'next/error';
 
 import CardMain from '../../components/CardMain';
 import CardCharacter from '../../components/CardCharacter';
@@ -10,9 +9,9 @@ import CardCharacter from '../../components/CardCharacter';
 const Comic = ({comic, characters}) => {
   const router = useRouter();
 
-  // if(router.isFallback) {
-  //   return <h1>Loading...</h1>
-  // }  
+  if(router.isFallback) {
+    return <h1>Loading...</h1>
+  }  
 
   const getCharacters = characters.map( character => <CardCharacter key={character.id}  character={character} /> )
 
