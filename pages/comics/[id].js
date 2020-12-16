@@ -64,4 +64,5 @@ export const getStaticProps = async ({params}) => {
       comic: comic[0], characters
     }
   }
+  
 }
