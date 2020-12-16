@@ -17,9 +17,8 @@ const Characters = ({characters}) => {
     setCharactersData( characters );
   }
 
-  const getCharacters = charactersData.map((character) => (
-      <CardLink data={character} key={character.id}/>
-    )
+  const getCharacters = charactersData.map( (character) => 
+    <CardLink data={character} key={character.id}/> 
   );
 
   return (
@@ -39,7 +38,7 @@ const Characters = ({characters}) => {
   )
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const link = `${url}/v1/public/characters?limit=20&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const characters = await getReq(link);
   return {

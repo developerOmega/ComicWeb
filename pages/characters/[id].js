@@ -15,18 +15,6 @@ const Character = ({character, comics}) => {
     return <h1>Loading...</h1>
   }
 
-  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
-  if(!comics) {
-    return (
-      <section>
-        <Head>
-          <meta name="robots" content="noindex" />
-        </Head>
-        <DefaultErrorPage statusCode={404} />
-      </section>
-    )
-  }
-
   const getCimics = comics.map( comic => <CardComic key={comic.id} comic={comic}  /> )
 
   return (
@@ -63,6 +51,12 @@ export const getStaticProps = async ({params}) => {
 
   let character = await getReq(linkCharacter);
   let comics = await getReq(linkComic);
+
+  if (!character || !comics) {
+    return {
+      notFound: true,
+    }
+  }
   
   return {
     props: {

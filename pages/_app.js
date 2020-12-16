@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
 
-  const Layout = Component.Layout || (children => <> {children} </>)
+  const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
   return (
     <Layout>
