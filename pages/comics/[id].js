@@ -10,9 +10,9 @@ import CardCharacter from '../../components/CardCharacter';
 const Comic = ({comic, characters}) => {
   const router = useRouter();
 
-  if(router.isFallback) {
-    return <h1>Loading...</h1>
-  }  
+  // if(router.isFallback) {
+  //   return <h1>Loading...</h1>
+  // }  
 
   const getCharacters = characters.map( character => <CardCharacter key={character.id}  character={character} /> )
 

@@ -11,9 +11,9 @@ const Character = ({character, comics}) => {
 
   const router = useRouter();
 
-  if(router.isFallback) {
-    return <h1>Loading...</h1>
-  }
+  // if(router.isFallback) {
+  //   return <h1>Loading...</h1>
+  // }
 
   const getCimics = comics.map( comic => <CardComic key={comic.id} comic={comic}  /> )
 

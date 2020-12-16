@@ -11,9 +11,9 @@ import CardComic from '../../components/CardComic';
 const Serie = ({serie, comics, characters}) => {
   const router = useRouter();
 
-  if(router.isFallback) {
-    return <h1>Loading...</h1>
-  }
+  // if(router.isFallback) {
+  //   return <h1>Loading...</h1>
+  // }
 
   const getComics = comics.map( comic =>
     <CardComic comic={comic} key={comic.id} />  
