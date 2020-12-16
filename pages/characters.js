@@ -41,6 +41,7 @@ const Characters = ({characters}) => {
 export const getStaticProps = async () => {
   const link = `${url}/v1/public/characters?limit=20&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const characters = await getReq(link);
+  console.log(characters);
   return {
     props: { characters }
   }
