@@ -7,7 +7,7 @@ const CardCharacter = ({character}) => {
       <div className={styles.select}>
         {character.name} 
       </div> 
-      <Image src={ data.thumbnail.path + '.' + data.thumbnail.extension } alt={data.name} layout="responsive" height="100%" width="100%" />
+      <Image src={ character.thumbnail.path + '.' + character.thumbnail.extension } alt={character.name} layout="responsive" height="100%" width="100%" />
     </div>  
   )
 }

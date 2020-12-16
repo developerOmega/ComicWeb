@@ -8,7 +8,7 @@ const CardComic = ( {comic} ) => {
     <div className={styles.container}>
       
       <div className={styles.mainImage}>
-        <Image src={ data.thumbnail.path + '.' + data.thumbnail.extension } alt={ data.title } layout="responsive" height="100%" width="100%" />
+        <Image src={ comic.thumbnail.path + '.' + comic.thumbnail.extension } alt={ comic.title } layout="responsive" height="100%" width="100%" />
       </div>
 
       
