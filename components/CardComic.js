@@ -1,4 +1,6 @@
 import styles from './CardComic.module.scss';
+import Image from 'next/image';
+
 
 const CardComic = ( {comic} ) => {
 
@@ -6,7 +8,7 @@ const CardComic = ( {comic} ) => {
     <div className={styles.container}>
       
       <div className={styles.mainImage}>
-        <img  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} width="100px" />
+        <Image src={ data.thumbnail.path + '.' + data.thumbnail.extension } alt={ data.title } layout="responsive" height="100%" width="100%" />
       </div>
 
       

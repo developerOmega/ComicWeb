@@ -1,11 +1,12 @@
 import styles from './CardMain.module.scss';
+import Image from 'next/image';
 
 const CardMain = ({data}) => {
 
   return (
     <div className={styles.container}>
       <div className={styles.mainImage}>
-        <img src={data.thumbnail.path + '.' + data.thumbnail.extension} />
+        <Image src={ data.thumbnail.path + '.' + data.thumbnail.extension } alt={data.name || data.title} layout="responsive" height="100%" width="100%" />
       </div>
     
       <div className={styles.name}>
