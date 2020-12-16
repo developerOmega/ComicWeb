@@ -25,6 +25,7 @@
 .select {
   position: absolute;
   bottom: 0;
+  z-index: 2;
 
   transition: ease .5s all;  
   height: 100%;
