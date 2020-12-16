@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import {url, publicKey, ts, hash} from '../../config/config';
 import { getReq } from '../../config/axios';
-import DefaultErrorPage from 'next/error';
 
 import CardMain from '../../components/CardMain';
 import CardCharacter from '../../components/CardCharacter';

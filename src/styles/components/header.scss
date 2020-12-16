@@ -36,6 +36,7 @@ header.header {
 @media screen and (max-width: 850px) {
   .main {
     grid-template-columns: 1fr;
+    grid-template-areas: "main" "footer";
   }
   header.header {
     display: none; 

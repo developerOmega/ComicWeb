@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import { publicKey, hash, ts, url } from '../../config/config';
-import { getReq, getParams } from '../../config/axios';
-import DefaultErrorPage from 'next/error';
+import { getReq } from '../../config/axios';
 
 import CardMain from '../../components/CardMain';
 import CardComic from '../../components/CardComic';
@@ -37,7 +36,7 @@ Character.Layout = MainLayout;
 export default Character;
 
 export const getStaticPaths = async () => {
-  const link = `${url}/v1/public/characters?ts=${ts}&apikey=${process.env.PUBLIC_KEY}&hash=${hash}`;
+  const link = `${url}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const characters = await getReq(link);
   
   const paths = characters.map( character => `/characters/${character.id}`);
@@ -46,8 +45,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params}) => {
 
-  const linkCharacter = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${process.env.PUBLIC_KEY}&hash=${hash}`;
-  const linkComic = `${url}/v1/public/characters/${params.id}/comics?ts=${ts}&apikey=${process.env.PUBLIC_KEY}&hash=${hash}`;
+  const linkCharacter = `${url}/v1/public/characters/${params.id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const linkComic = `${url}/v1/public/characters/${params.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
   let character = await getReq(linkCharacter);
   let comics = await getReq(linkComic);
