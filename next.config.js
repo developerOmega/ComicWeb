@@ -29,5 +29,9 @@ module.exports = {
         permanent: true,
       },
     ]
+  },
+  env: {
+    PUBLIC_KEY: 'cfd24420303411073f002d1d39e26031',
+    PRIVATE_KEY: '302757dec4320cb2853505f9a0eb522e2f29f635'
   }
 }
